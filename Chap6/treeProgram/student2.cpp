@@ -32,15 +32,63 @@ void insertKeyToSearchtree(Node*& pTree, int key){
 }
 
 bool contains(Node *pTree, int key){
-    return false; // bug
+    if(pTree == nullptr){
+        pTree->flash();
+        return false;
+    }
+    if(key < pTree->_key){
+        pTree->flash();
+        return contains(pTree->_pLeft, key);
+    }
+    if(key > pTree->_key){
+        pTree->flash();
+        return contains(pTree->_pRight, key);
+    }
+    return true;
+
 }
 
 
 Node* nodeWithMinimumKey(Node *pTree){
-    return nullptr; // bug
+
+    if(pTree == nullptr){
+        pTree->flash();
+        return nullptr;
+    }
+
+    if(pTree->_pLeft == nullptr){
+        pTree->flash();
+        return pTree;
+    }
+    pTree->flash();
+    return nodeWithMinimumKey(pTree->_pLeft);
 }
 
 void removeKeyFromSearchtree(Node* &pTree, int key){
+
+    if(pTree == nullptr){
+        pTree->flash();
+        return;
+    }else if (key < pTree->_key){
+        pTree->flash();
+        removeKeyFromSearchtree((pTree->_pLeft), key);
+    }else if(key > pTree->_key){
+        pTree->flash();
+        removeKeyFromSearchtree((pTree->_pRight), key);
+    }else{
+        if(pTree->_pLeft == nullptr || pTree->_pRight == nullptr){
+            Node *pOldNode = pTree;
+            pTree->flash();
+            pTree = (pTree->_pLeft!=nullptr ? pTree->_pLeft : pTree->_pRight);
+            delete pOldNode;
+        }else
+        {
+            pTree->flash();
+            pTree->_key = nodeWithMinimumKey(pTree->_pRight)->_key;
+            pTree->flash();
+            removeKeyFromSearchtree((pTree->_pRight), pTree->_key);
+        }
+    }
 
 }
 
