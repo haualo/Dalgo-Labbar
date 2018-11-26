@@ -99,7 +99,7 @@ void removeKeyFromSearchtree(Node* &pTree, int key){
 
   TODO...
 
-  höjd = ..
+  höjd = 18
 
   genomsnittligt djup = ...
 
