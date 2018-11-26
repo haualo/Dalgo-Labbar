@@ -26,12 +26,6 @@ bool didIndicatePathToGoal(IMaze *pMaze, int r, int k){
 
     }
 
-
-
-
-
-
-
     return false;
 
 }

@@ -99,9 +99,15 @@ void removeKeyFromSearchtree(Node* &pTree, int key){
 
   TODO...
 
+  för 255
   höjd = 18
-
   genomsnittligt djup = 8.6
+
+  för 500
+  höjd = 21
+  genomsnittligt djup = 9.44
+
+
 
   (gör flera experiment)
 
