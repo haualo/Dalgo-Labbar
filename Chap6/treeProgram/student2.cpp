@@ -4,7 +4,7 @@
 #include <stdio.h>
 #include <algorithm>
 #include <deque>
-
+#include "visualnode.h"
 #include "students.h"
 
 
@@ -17,6 +17,17 @@
  **************************************************************************/
 
 void insertKeyToSearchtree(Node*& pTree, int key){
+    if(pTree == nullptr){
+        pTree = new Node(key, nullptr, nullptr);
+        pTree->flash();
+    }else if(key < pTree->_key){
+        insertKeyToSearchtree((pTree->_pLeft), key);
+        pTree->flash();
+    }else if(key > pTree->_key){
+        insertKeyToSearchtree((pTree->_pRight), key);
+        pTree->flash();
+    }else
+        ;
 
 }
 

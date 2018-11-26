@@ -49,32 +49,62 @@ void flashPostOrder(Node *pTree){
 
 
 void flashNodesAtIncreasingDepth(Node *pTree){
-    // Denna funktion skall inte vara rekursiv.
-    // implementera den med hjälp av en FIFO-kö.
-    // Så här kan du deklarera fifo-kön:
-    // std::deque<Node*> que;
-    // så här stoppar du in ett värde i kön
-    // que.push_back( nodepekare );
-    // så här läser du det värde som ligger främst
-    // Node *p = que.front();
-    // så här avlägsnar du det främsta värdet från kön
-    // que.pop_front();
+
+    if(pTree== nullptr){
+        return;
+    }
 
     std::deque<Node*> que;
+    que.push_back( pTree);
+    pTree->flash();
+
+
+    while(!que.empty()){
+
+        Node *p = que.front();
+        p->flash();
+        que.pop_front();
+
+        if(p->_pLeft){
+            que.push_back(p->_pLeft);
+
+        }
+
+        if(p->_pRight){
+            que.push_back(p->_pRight);
+        }
+    }
+
+
+
+
 
 }
 
 int numberOfNodes(Node *pTree){
 
-    return 108; // bug
+    if(pTree == nullptr){
+        return 0;
+    }
 
-
+    return 1 + numberOfNodes(pTree->_pLeft) + numberOfNodes(pTree->_pRight);
 }
 
 int height(Node *pTree){
 
-    return 108; // bug
+    if(pTree == nullptr){
+        return -1;
+    }
+    int leftSide = height(pTree->_pLeft);
+    int rightSide = height(pTree->_pRight);
 
+    if(leftSide > rightSide){
+        pTree->flash();
+        return leftSide +1;
+    }else{
+        pTree->flash();
+        return rightSide +1;
+    }
 
 }
 
