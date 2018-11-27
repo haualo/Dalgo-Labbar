@@ -4,7 +4,7 @@
 
 
 const char* nameOfStudent(){
-    return "Homer Simpson";
+    return "Haval Sarbast";
 }
 
 MinHeap::MinHeap(int sizeOfArray)
@@ -16,11 +16,22 @@ MinHeap::MinHeap(int sizeOfArray)
 
 MinHeap::~MinHeap(){
    // TODO
+
+    delete [] _theArray;
 }
 
 void MinHeap::insert(int data){
     assert( !isFull() );   // krascha om full
 
+    _size +=1;
+    int myX = _size;
+
+    while(myX > 1 && _theArray[myX/2] > data){
+
+        _theArray[myX] = _theArray[myX/2];
+        myX /=2;
+    }
+    _theArray[myX] = data;
 }
 
 
@@ -34,10 +45,32 @@ int MinHeap::min()
 void MinHeap::deleteMin(){
     assert( !isEmpty() );
 
+    _theArray[1] = _theArray[_sizeOfArray];
+    --_sizeOfArray;
+    percolateDown(1);
+
 }
 
 
 void MinHeap::percolateDown(int ix){
+
+    int myX = _theArray[ix];
+
+    while(ix*2<=_size){
+        int myxKid = ix*2;
+
+        if(myxKid!=_size && _theArray[myxKid+1]<_theArray[myxKid]){
+            ++myxKid;
+        }
+        if(_theArray[myxKid]>= myX){
+            break;
+        }
+        _theArray[ix] = _theArray[myxKid];
+        ix = myxKid;
+
+    }
+
+    _theArray[ix] = myX;
 
 }
 
