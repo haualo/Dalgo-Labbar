@@ -45,8 +45,8 @@ int MinHeap::min()
 void MinHeap::deleteMin(){
     assert( !isEmpty() );
 
-    _theArray[1] = _theArray[_sizeOfArray];
-    --_sizeOfArray;
+    _theArray[1] = _theArray[_size];
+    --_size;
     percolateDown(1);
 
 }
@@ -56,7 +56,7 @@ void MinHeap::percolateDown(int ix){
 
     int myX = _theArray[ix];
 
-    while(ix*2<=_size){
+    while((ix*2) <=_size){
         int myxKid = ix*2;
 
         if(myxKid!=_size && _theArray[myxKid+1]<_theArray[myxKid]){
