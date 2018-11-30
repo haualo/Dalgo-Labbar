@@ -2,6 +2,7 @@
 #include "studentsystemsimulator.h"
 #include <iostream>
 #include <string>
+#include "assert.h"
 
 const char* nameOfStudent();
 

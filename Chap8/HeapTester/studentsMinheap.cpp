@@ -16,7 +16,6 @@ MinHeap::MinHeap(int sizeOfArray)
 
 MinHeap::~MinHeap(){
    // TODO
-
     delete [] _theArray;
 }
 
@@ -38,7 +37,7 @@ void MinHeap::insert(int data){
 int MinHeap::min()
 {
     assert( _size>0);
-    return 0;
+    return _theArray[1];
 }
 
 
@@ -59,7 +58,7 @@ void MinHeap::percolateDown(int ix){
     while((ix*2) <=_size){
         int myxKid = ix*2;
 
-        if(myxKid!=_size && _theArray[myxKid+1]<_theArray[myxKid]){
+        if(myxKid !=_size && _theArray[myxKid+1]<_theArray[myxKid]){
             ++myxKid;
         }
         if(_theArray[myxKid]>= myX){
@@ -67,9 +66,7 @@ void MinHeap::percolateDown(int ix){
         }
         _theArray[ix] = _theArray[myxKid];
         ix = myxKid;
-
     }
-
     _theArray[ix] = myX;
 
 }
