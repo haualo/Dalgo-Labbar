@@ -1,0 +1,18 @@
+#include "student1drawgraph.h"
+
+
+const char* nameOfStudent1(){
+    return "Haval Sarbast";
+}
+
+
+void studentsDrawGraph(QPainter& painter,  const std::vector<Node>& graph){
+
+    painter.fillRect(pt1.x(), pt1.y(),1,1, Qt::black);
+    painter.drawLine(pt1, pt2);
+
+    // TODO
+}
+
+
+
